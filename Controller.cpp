@@ -1,42 +1,44 @@
-#include "Controller.hh"
+#include "Controller.hpp"
 
 Controller::Controller(){
-  endpointBuilder.set_host(_address);
-  endpointBuilder.set_port(_port);
+  web::uri_builder endpointBuilder;
+  endpointBuilder.set_host(m_address);
+  endpointBuilder.set_port(m_port);
   endpointBuilder.set_scheme("http");
-  endpointBuilder.set_path(_end_point);
-  _listener = http_listener(endpointBuilder.to_uri());
+  endpointBuilder.set_path(m_endpoint);
+  m_listener = web::http::experimental::listener::http_listener(endpointBuilder.to_uri());
 
 }
 
 pplx::task<void> Controller::accept() {
-    initRestOpHandlers();
-    return _listener.open(); //server starts form at this moment
+  initRestOpHandlers();
+  return m_listener.open(); //server starts  at this moment
 }
 pplx::task<void> Controller::shutdown() {
-  return _listener.close(); //kills server
+  return m_listener.close(); //kills serverx
 }
 
 void Controller::initRestOpHandlers(){
-  _listener.support(methods::GET,std::bind(&Controller::handleGet,this,
+  m_listener.support(web::http::methods::GET,std::bind(&Controller::handleGet,this,
 					   std::placeholders::_1));
 }
 
-std::vector<utility::string_t> Controller::requestPath(const http_request& message)
+std::vector<utility::string_t> Controller::requestPath(const web::http::http_request& message)
 {
-    auto relativePath = uri::decode(message.relative_uri().path());
-    return uri::split_path(relativePath);
+  auto relativePath = web::http::uri::decode(message.relative_uri().path());
+  return web::http::uri::split_path(relativePath);
 }
 
-void Controller::handleGet(http_request message) {
-  vector<string> path = requestPath(message);
-
+void Controller::handleGet(web::http::http_request message) {
+  std::vector<std::string> path = requestPath(message);
+  for (auto const& s : path)
+    std::cout << s << std::endl;
   if(path[0]=="welcome") {
-    message.reply(status_codes::OK,"Hello World!\n");
+    message.reply(web::http::status_codes::OK,"Hello World!\n");
   }
 
   else {
-    message.reply(status_codes::BadRequest);
+    message.reply(web::http::status_codes::NotFound);
   }
     
 }

@@ -1,5 +1,5 @@
-#ifndef CONTROLLER_HH
-#define CONTROLLER_HH
+#ifndef CONTROLLER_HPP
+#define CONTROLLER_HPP
 
 #include <cpprest/http_listener.h>
 #include <cpprest/http_msg.h>
@@ -12,10 +12,10 @@ using namespace http;
 using namespace http::experimental::listener;
 
 class Controller{
-  const string _end_point = "/";
+  const string _end_point = "/welcome";
   const string _port = "1234";
   const string _address  = "localhost";
-  web::uri_builder endpointBuilder;
+
   http_listener _listener;
 public:
   
@@ -27,7 +27,7 @@ public:
   void handleGet(http_request message);
   
     
-
+  //fdfsdfsfs
 };
   
 #endif
