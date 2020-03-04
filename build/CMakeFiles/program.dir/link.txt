@@ -1,0 +1,1 @@
+/usr/bin/c++   -pedantic -Wall   CMakeFiles/program.dir/main.cpp.o  -o program libController.a -lcpprest -lpthread -lboost_system -lssl -lcrypto 

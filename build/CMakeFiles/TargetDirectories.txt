@@ -1,0 +1,4 @@
+/home/damian/Pulpit/SimpleRestApi/build/CMakeFiles/rebuild_cache.dir
+/home/damian/Pulpit/SimpleRestApi/build/CMakeFiles/edit_cache.dir
+/home/damian/Pulpit/SimpleRestApi/build/CMakeFiles/Controller.dir
+/home/damian/Pulpit/SimpleRestApi/build/CMakeFiles/program.dir

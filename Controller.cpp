@@ -30,6 +30,13 @@ std::vector<utility::string_t> Controller::requestPath(const web::http::http_req
 
 void Controller::handleGet(web::http::http_request message) {
   std::vector<std::string> path = requestPath(message);
+
+  if (path.empty())
+    {
+      std::cerr << "Empty vector";
+      std::exit(1);
+    } 
+  
   for (auto const& s : path)
     std::cout << s << std::endl;
   if(path[0]=="welcome") {

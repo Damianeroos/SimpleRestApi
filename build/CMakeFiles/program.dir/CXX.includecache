@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/damian/Pulpit/SimpleRestApi/Controller.hpp
+cpprest/http_listener.h
+-
+cpprest/http_msg.h
+-
+pplx/pplxtasks.h
+-
+string
+-
+
+/home/damian/Pulpit/SimpleRestApi/main.cpp
+Controller.hpp
+/home/damian/Pulpit/SimpleRestApi/Controller.hpp
+
