@@ -7,7 +7,6 @@ Controller::Controller(){
   endpointBuilder.set_scheme("http");
   endpointBuilder.set_path(m_endpoint);
   m_listener = web::http::experimental::listener::http_listener(endpointBuilder.to_uri());
-
 }
 
 pplx::task<void> Controller::accept() {
